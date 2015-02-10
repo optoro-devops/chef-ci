@@ -13,4 +13,4 @@ $DIR/check_version.sh
 rbenv local 2.1.2
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install
-bundle exec strainer test
+bundle exec strainer test --fail-fast

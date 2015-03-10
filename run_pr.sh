@@ -11,6 +11,10 @@ $DIR/build_ssh.sh
 cd $WORKSPACE/repo
 
 $DIR/check_version.sh
+
+# Set kitchen's override config
+export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
+
 rbenv local 2.1.2
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install

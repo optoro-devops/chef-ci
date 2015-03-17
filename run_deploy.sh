@@ -5,5 +5,5 @@ DIR=$(cd $(dirname "$0"); pwd)
 $DIR/set_env.sh
 
 cd $WORKSPACE/repo
-rbenv local 2.1.2
+rvm use 2.1.2
 bundle exec berks up

@@ -9,5 +9,5 @@ $DIR/set_env.sh
 export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
 
 cd $WORKSPACE/repo
-rbenv local 2.1.2
+rvm use 2.1.2
 bundle exec strainer test --only kitchen

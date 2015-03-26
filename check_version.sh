@@ -1,9 +1,6 @@
 #!/bin/bash --login
 DIR=$(cd $(dirname "$0"); pwd)
 
-# Create environment
-$DIR/set_env.sh
-
 # Build ssh script for git
 $DIR/build_ssh.sh
 
@@ -16,9 +13,14 @@ function real_version {
 }
 
 export TAG=`cat $WORKSPACE/repo/metadata.rb | grep -m1 version | sed 's/'\''//g' | awk '{print "v"$2}'`
+cd $WORKSPACE/repo
 for x in $(git ls-remote --tags --exit-code origin | awk '{print $2}' | sed 's/refs\/tags\/\(v.*\)$/\1/'); do 
-  if [[ $(real_version $TAG) -le $(real_version $x) ]]; then
-    echo "ERROR: ${TAG} has already been used or is less than the current version";
+  if [ $? == 0 ]; then
+    if [[ $(real_version $TAG) -le $(real_version $x) ]]; then
+      echo "ERROR: ${TAG} has already been used or is less than the current version";
+      exit 1;
+    fi;
+  else
     exit 1;
-  fi;
+  fi
 done

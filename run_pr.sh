@@ -12,6 +12,8 @@ cd $WORKSPACE/repo
 
 $DIR/check_version.sh
 
+if [ $? != 0 ]; then exit 1; fi
+
 # Set kitchen's override config
 export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
 # Configure Berkshelf DepSolver timeout to 600 secs

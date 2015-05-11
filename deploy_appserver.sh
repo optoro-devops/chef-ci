@@ -5,10 +5,10 @@ environment=$1
 tag=$2
 action=$3
 
-if [[ "$action" == "rollback" ]]; then
+if [ -z "$action" ]; then
   for node in `knife search node "chef_environment:$environment AND tags:$tag" -i -F text | egrep -v "items found|^$"`; do
-    echo "setting rollback attribute for node: $node..."
-    knife set_attribute node $node one_time_action 'rollback'
+    echo "setting one_time_action attribute for node: $node..."
+    knife set_attribute node $node one_time_action $action
   done
 fi
 

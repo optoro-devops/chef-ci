@@ -10,4 +10,8 @@ export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
 
 cd $WORKSPACE/repo
 rvm use 2.1.2
-bundle exec strainer test --only kitchen
+if [ -f Thorfile ]; then
+  bundle exec thor test:kitchen
+else
+  bundle exec strainer test --only kitchen
+fi

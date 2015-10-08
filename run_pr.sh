@@ -22,8 +22,12 @@ export SOLVE_TIMEOUT=600
 rvm use 2.1.2
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install
-bundle exec strainer test --fail-fast | tee $WORKSPACE/log
-STRAINER_EXIT=$?
+if [ -f Thorfile ]; then
+  bundle exec thor test:test | tee $WORKSPACE/log
+else
+  bundle exec strainer test --fail-fast | tee $WORKSPACE/log
+fi
+TEST_EXIT=$?
 cat $WORKSPACE/log | grep chefspec >> $WORKSPACE/comments
 LOG_EXIT=$?
-if [ $STRAINER_EXIT != 0 ] || [ $LOG_EXIT != 0 ]; then exit 1; fi
+if [ $TEST_EXIT != 0 ] || [ $LOG_EXIT != 0 ]; then exit 1; fi

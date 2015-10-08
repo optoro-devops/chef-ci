@@ -6,4 +6,8 @@ $DIR/set_env.sh
 
 cd $WORKSPACE/repo
 rvm use 2.1.2
-bundle exec strainer test --only knife
+if [ -f Thorfile ]; then
+  bundle exec thor test:knife_test
+else
+  bundle exec strainer test --only knife
+fi

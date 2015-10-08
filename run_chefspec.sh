@@ -7,7 +7,7 @@ $DIR/set_env.sh
 
 cd $WORKSPACE/repo
 rvm use 2.1.2
-if [ -f Thorfile ]; then
+if [ -f $WORKSPACE/repo/Thorfile ]; then
   bundle exec thor test:chefspec
 else
   bundle exec strainer test --only chefspec

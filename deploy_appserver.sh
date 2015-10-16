@@ -15,4 +15,4 @@ if [ -n "$action" ]; then
 fi
 
 echo "beginning $action for nodes..."
-knife ssh "chef_environment:$environment AND tags:$tag" "sudo chef-client" -x jenkins -a ipaddress
+knife batch -B 5 -W 10 "chef_environment:$environment AND tags:$tag" "sudo chef-client" -x jenkins -a ipaddress

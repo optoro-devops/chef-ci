@@ -5,7 +5,7 @@ environment=$1
 tag=$2
 action=$3
 
-rvm use system
+rvm use current
 
 if [ -n "$action" ]; then
   for node in `knife search node "chef_environment:$environment AND tags:$tag" -i -F text | egrep -v "items found|^$"`; do

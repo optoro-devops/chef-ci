@@ -7,7 +7,7 @@ $DIR/set_env.sh
 cd $WORKSPACE/repo
 rvm use 2.1.2
 if [ -f Thorfile ]; then
-  bundle exec thor test:foodcritic
+  bundle exec foodcritic -f any -B ./ -G
 else
   bundle exec strainer test --only foodcritic
 fi

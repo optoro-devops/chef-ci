@@ -5,7 +5,7 @@ DIR=$(cd $(dirname "$0"); pwd)
 $DIR/set_env.sh
 
 cd $WORKSPACE/repo
-rvm use 2.1.2
+rvm use 2.2.2
 if [ -f Thorfile ]; then
   bundle exec thor test:rubocop
 else

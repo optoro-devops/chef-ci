@@ -9,7 +9,7 @@ $DIR/set_env.sh
 export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
 
 cd $WORKSPACE/repo
-rvm use 2.1.2
+rvm use 2.2.2
 if [ -f Thorfile ]; then
   bundle exec thor test:kitchen
 else

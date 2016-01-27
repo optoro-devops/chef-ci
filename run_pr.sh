@@ -23,6 +23,8 @@ rvm use 2.2.2
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install
 if [ -f Thorfile ]; then
+  set -e
+  bundle exec foodcritic -f any -B ./ -G
   bundle exec thor test:test | tee $WORKSPACE/log
 else
   bundle exec strainer test --fail-fast | tee $WORKSPACE/log

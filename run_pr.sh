@@ -15,7 +15,13 @@ $DIR/check_version.sh
 if [ $? != 0 ]; then exit 1; fi
 
 # Set kitchen's override config
-export KITCHEN_LOCAL_YAML=~jenkins/.kitchen/config.yml
+# Precedence:
+# 1) KITCHEN_LOCAL_YAML (highest)
+# 2) KITCHEN_YAML
+# 3) KITCHEN_GLOBAL_YAML (lowest)
+export KITCHEN_LOCAL_YAML=$WORKSPACE/repo/.kitchen-override.yml
+export KITCHEN_YAML=~jenkins/.kitchen/config.yml
+export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 # Configure Berkshelf DepSolver timeout to 600 secs
 export SOLVE_TIMEOUT=600
 

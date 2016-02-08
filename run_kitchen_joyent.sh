@@ -24,7 +24,13 @@ export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 
 cd $WORKSPACE/repo
 rvm use 2.2.2
-gem install kitchen-joyent
+
+if ! grep -q "kitchen-joyent" Gemfile
+then
+  echo "gem 'kitchen-joyent', '~> 0.2.2'" >> Gemfile
+  bundle install
+fi
+
 if [ -f Thorfile ]; then
   bundle exec thor test:kitchen
 else

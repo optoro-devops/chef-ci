@@ -15,7 +15,7 @@ export KITCHEN_YAML=~jenkins/.kitchen/config.yml
 export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 
 cd $WORKSPACE/repo
-rvm use 2.2.2
+rvm use 2.2.4
 if [ -f Thorfile ]; then
   bundle exec thor test:kitchen
 else

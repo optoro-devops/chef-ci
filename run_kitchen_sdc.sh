@@ -7,7 +7,7 @@ eval `ssh-agent`
 
 # Add the default keys like id_rsa and id_dsa (or explicitly specify your key,
 # if it's not a default)
-ssh-add ~jenkins/.ssh/joyent.pem
+ssh-add ~jenkins/.ssh/sdc.pem
 
 # Create environment
 $DIR/set_env.sh
@@ -19,7 +19,7 @@ $DIR/set_env.sh
 # 2) KITCHEN_YAML
 # 3) KITCHEN_GLOBAL_YAML (lowest)
 export KITCHEN_LOCAL_YAML=$WORKSPACE/repo/.kitchen-override.yml
-export KITCHEN_YAML=~jenkins/.kitchen/config_joyent.yml
+export KITCHEN_YAML=~jenkins/.kitchen/config_sdc.yml
 export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 
 cd $WORKSPACE/repo

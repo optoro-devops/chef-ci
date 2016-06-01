@@ -8,6 +8,11 @@ $DIR/set_env.sh
 export SOLVE_TIMEOUT=600
 
 cd $WORKSPACE/repo
-rvm use 2.2.4
+
+if [ -d /usr/local/rvm ]
+then
+  rvm use 2.2.4
+fi
+
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install

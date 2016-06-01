@@ -5,7 +5,11 @@ DIR=$(cd $(dirname "$0"); pwd)
 $DIR/set_env.sh
 
 cd $WORKSPACE/repo
-rvm use 2.2.4
+if [ -d /usr/local/rvm ]
+then
+  rvm use 2.2.4
+fi
+
 bundle exec berks up
 if [ $? == 0 ];
 then

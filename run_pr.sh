@@ -25,7 +25,11 @@ export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 # Configure Berkshelf DepSolver timeout to 600 secs
 export SOLVE_TIMEOUT=600
 
-rvm use 2.2.4
+if [ -d /usr/local/rvm ]
+then
+  rvm use 2.2.4
+fi
+
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install
 if [ -f Thorfile ]; then

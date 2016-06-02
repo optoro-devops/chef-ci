@@ -1,14 +1,6 @@
 #!/bin/bash --login
 DIR=$(cd $(dirname "$0"); pwd)
 
-# Start the ssh agent. Evaling the output will set the relevant environment
-# variables
-eval `ssh-agent`
-
-# Add the default keys like id_rsa and id_dsa (or explicitly specify your key,
-# if it's not a default)
-ssh-add ~jenkins/.ssh/sdc.pem
-
 # Create environment
 $DIR/set_env.sh
 
@@ -39,13 +31,3 @@ if [ -f Thorfile ]; then
 else
   bundle exec strainer test --only kitchen
 fi
-
-# Save the return value of your script
-RETVAL=$?
-
-# Clean up
-kill $SSH_AGENT_PID
-
-# Exit the script with the true return value instead of the return value of kill
-# which could be successful even when the build has crashed
-exit $RETVAL

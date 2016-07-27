@@ -11,7 +11,7 @@ then
 fi
 
 if [ -n "$action" ]; then
-  for node in `knife search node "chef_environment:$environment AND tags:$tag" -i -F text | egrep -v "items found|^$"`; do
+  for node in `knife search node "chef_environment:$environment AND tags:$tag" -i -F text 2>&1 | egrep -v "items found|^$"`; do
     echo "setting action to $action for node: $node..."
     knife set_attribute node $node one_time_action $action
   done

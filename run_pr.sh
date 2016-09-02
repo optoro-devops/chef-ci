@@ -20,7 +20,7 @@ if [ $? != 0 ]; then exit 1; fi
 # 2) KITCHEN_YAML
 # 3) KITCHEN_GLOBAL_YAML (lowest)
 export KITCHEN_LOCAL_YAML=$WORKSPACE/repo/.kitchen-override.yml
-export KITCHEN_YAML=~jenkins/.kitchen/config.yml
+export KITCHEN_YAML=~jenkins/.kitchen/config_sdc.yml
 export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 # Configure Berkshelf DepSolver timeout to 600 secs
 export SOLVE_TIMEOUT=600

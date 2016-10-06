@@ -14,5 +14,6 @@ then
   rvm use 2.2.4
 fi
 
+echo "gem 'knife-supermarket'" >> Gemfile
 bundle install --path ~jenkins/vendor/bundle --jobs 4 --retry 3
 bundle exec berks install

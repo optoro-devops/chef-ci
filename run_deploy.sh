@@ -23,5 +23,5 @@ fi
 
 if [[ $COOKBOOK == optoro_* ]];
 then
-  bundle exec knife supermarket share -m 'https://supermarket.optoro.io' -o '.' $COOKBOOK 
+  bundle exec knife supermarket share -m 'https://supermarket.optoro.io' -o '..' $COOKBOOK 
 fi

@@ -11,7 +11,7 @@ $DIR/set_env.sh
 # 2) KITCHEN_YAML
 # 3) KITCHEN_GLOBAL_YAML (lowest)
 export KITCHEN_LOCAL_YAML=$WORKSPACE/repo/.kitchen-override.yml
-export KITCHEN_YAML=~jenkins/.kitchen/config.yml
+export KITCHEN_YAML=~jenkins/.kitchen/config_sdc.yml
 export KITCHEN_GLOBAL_YAML=$WORKSPACE/repo/.kitchen.yml
 
 cd $WORKSPACE/repo
